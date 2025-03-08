@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-Sitemap: //localhost:1313/sitemap.xml
+Sitemap: /sitemap.xml
