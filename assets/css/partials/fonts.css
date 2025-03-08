@@ -1,0 +1,119 @@
+@font-face {
+    font-family: 'ITC Berkeley Oldstyle Std';
+    src: url('/fonts/BerkeleyStd-Book.woff2') format('woff2'),
+        url('/fonts/BerkeleyStd-Book.woff') format('woff'),
+        url('/fonts/BerkeleyStd-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ITC Berkeley Oldstyle Std';
+    src: url('/fonts/BerkeleyStd-BoldItalic.woff2') format('woff2'),
+        url('/fonts/BerkeleyStd-BoldItalic.woff') format('woff'),
+        url('/fonts/BerkeleyStd-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ITC Berkeley Oldstyle Std';
+    src: url('/fonts/BerkeleyStd-Bold.woff2') format('woff2'),
+        url('/fonts/BerkeleyStd-Bold.woff') format('woff'),
+        url('/fonts/BerkeleyStd-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ITC Berkeley Oldstyle Std';
+    src: url('/fonts/BerkeleyStd-BookItalic.woff2') format('woff2'),
+        url('/fonts/BerkeleyStd-BookItalic.woff') format('woff'),
+        url('/fonts/BerkeleyStd-BookItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ITC Berkeley Oldstyle Std';
+    src: url('/fonts/BerkeleyStd-Medium.woff2') format('woff2'),
+        url('/fonts/BerkeleyStd-Medium.woff') format('woff'),
+        url('/fonts/BerkeleyStd-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ITC Berkeley Oldstyle Std';
+    src: url('/fonts/BerkeleyStd-Italic.woff2') format('woff2'),
+        url('/fonts/BerkeleyStd-Italic.woff') format('woff'),
+        url('/fonts/BerkeleyStd-Italic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('/fonts/MyriadPro-Bold.woff2') format('woff2'),
+        url('/fonts/MyriadPro-Bold.woff') format('woff'),
+        url('/fonts/MyriadPro-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('/fonts/MyriadPro-BoldIt.woff2') format('woff2'),
+        url('/fonts/MyriadPro-BoldIt.woff') format('woff'),
+        url('/fonts/MyriadPro-BoldIt.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('/fonts/MyriadPro-Light.woff2') format('woff2'),
+        url('/fonts/MyriadPro-Light.woff') format('woff'),
+        url('/fonts/MyriadPro-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('/fonts/MyriadPro-Regular.woff2') format('woff2'),
+        url('/fonts/MyriadPro-Regular.woff') format('woff'),
+        url('/fonts/MyriadPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('/fonts/MyriadPro-Semibold.woff2') format('woff2'),
+        url('/fonts/MyriadPro-Semibold.woff') format('woff'),
+        url('/fonts/MyriadPro-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('/fonts/MyriadPro-SemiboldIt.woff2') format('woff2'),
+        url('/fonts/MyriadPro-SemiboldIt.woff') format('woff'),
+        url('/fonts/MyriadPro-SemiboldIt.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}

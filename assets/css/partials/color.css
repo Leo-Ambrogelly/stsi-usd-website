@@ -1,0 +1,23 @@
+:root {
+    --primary: #92B87C;
+    --primary-text: #92B87C;
+    --secondary-text: #ffffff;
+}
+
+[data-theme="blue"] {
+    --primary: #000080;
+    --primary-text: #000080;
+    --secondary-text: #ffffff;
+}
+
+[data-theme="lemon"] {
+    --primary: #E3FF00;
+    --primary-text: #000000;
+    --secondary-text: #000000;
+}
+
+[data-theme="red"] {
+    --primary: #FF0000;
+    --primary-text: #FF0000;
+    --secondary-text: #ffffff;
+}

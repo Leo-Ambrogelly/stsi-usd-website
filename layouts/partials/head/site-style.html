@@ -1,0 +1,10 @@
+{{/* styles */}}
+{{- $options := dict "inlineImports" true }}
+{{- $style := resources.Get "css/styles.css" }}
+{{- $styles := $style | css.PostCSS $options }}
+{{- if hugo.IsProduction }}
+  {{- $styles = $styles | minify | fingerprint | resources.PostProcess }}
+{{- else }}
+  {{- $styles = $styles | resources.ExecuteAsTemplate (printf "css/style.dev.%v.css" now.UnixMilli) . }}
+{{- end }}
+<link href="{{ $styles.RelPermalink }}" rel="stylesheet" />

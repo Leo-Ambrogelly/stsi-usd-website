@@ -1,0 +1,112 @@
+---
+title: STS-I at USD
+baseURL: /
+languageCode: en
+defaultContentLanguage: en
+services:
+  googleAnalytics:
+    id: G-MEASUREMENT_ID
+canonifyURLs: false
+disableAliases: true
+disableHugoGeneratorInject: true
+enableEmoji: true
+enableGitInfo: false
+enableRobotsTXT: true
+pagination:
+  pagerSize: 8
+rssLimit: 10
+preserveTaxonomyNames: true
+metaDataFormat: yaml
+summaryLength: 400
+permalinks:
+  page:
+    pages: "/:slug/"
+    page: /:slug/
+    blog: /:slug/
+taxonomies:
+  tag: tags
+  author: authors
+imaging:
+  quality: 100
+build:
+  writeStats: true
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+      wrapStandAloneImageWithinParagraph: false
+    renderer:
+      unsafe: true
+    renderHooks:
+      image:
+        enableDefault: true
+  highlight:
+    noClasses: false
+    style: solarized-dark256
+    tabWidth: 4
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3
+outputs:
+  home:
+    - HTML
+    - JSON
+    - REDIRECTS
+    - HEADERS
+  section:
+    - HTML
+mediaTypes:
+  text/netlify:
+    suffixes:
+      - ""
+    delimiter: ""
+outputFormats:
+  REDIRECTS:
+    mediaType: text/netlify
+    baseName: _redirects
+    isPlainText: true
+    notAlternative: true
+  HEADERS:
+    mediaType: text/netlify
+    baseName: _headers
+    isPlainText: true
+    notAlternative: true
+  SITEMAP:
+    mediaType: application/xml
+    baseName: sitemap
+    isHTML: false
+    isPlainText: true
+    noUgly: true
+    rel: sitemap
+caches:
+  getjson:
+    dir: ":cacheDir/:project"
+    maxAge: 10s
+sitemap:
+  changefreq: weekly
+  filename: sitemap.xml
+  priority: 0.5
+minify:
+  tdewolff:
+    html:
+      keepWhitespace: false
+module:
+  hugoVersion:
+    extended: true
+    min: 0.127.0
+    max: ""
+  mounts:
+    - source: assets
+      target: assets
+    - source: static
+      target: assets
+    - source: node_modules/alpinejs
+      target: assets/js/vendor/alpinejs
+    - source: node_modules/@alpinejs/collapse
+      target: assets/js/vendor/collapse
+    - source: node_modules/@alpinejs/persist
+      target: assets/js/vendor/persist
+    - source: node_modules/minisearch
+      target: assets/js/vendor/minisearch
+      

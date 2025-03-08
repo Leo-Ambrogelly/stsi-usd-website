@@ -1,0 +1,14 @@
+{{- define "main" }}
+<div id="main" class="page-list pt-10">
+    <div class="container w-full max-w-[710px] mx-auto">
+        <div>
+            {{- $paginator := .Paginate .Data.Pages }}
+            {{- range $paginator.Pages }}
+            {{ partial "post-card.html" . }}
+            {{- end }}
+        </div>
+
+        {{ partial "pagination.html" . }}
+    </div>
+</div>
+{{- end }}

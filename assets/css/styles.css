@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "partials/color.css";
+/* @import "partials/fonts.css"; */
+@import "partials/highlighter.css";
+@import "partials/button.css";
+@import "site.css";
+
+[x-cloak] {
+    display: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}  
+
+body {
+    @apply font-body;
+}
+
+.hero-bg-gradient {
+    background: linear-gradient(180deg, #000000 0%, #1B4B44 68.5%);
+}
+
+.hero-line-top {
+    background: linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, #11CAAD 21.5%, #11CAAD 78.5%, rgba(115, 115, 115, 0) 100%);
+    opacity: 0.46;
+}
+
+.footer-bg-gradient {
+    background: linear-gradient(180deg, #1B4B44 31.5%, #000000 96.5%);
+}
+
+.footer-support-bg {
+    background: linear-gradient(180deg, #0B0B0B 0%, rgba(113, 113, 113, 0) 100%);
+}
+
+.footer-newsletter-bg {
+    background: linear-gradient(180deg, #11CAAD 0%, rgba(8, 100, 86, 0.29) 100%);
+}
+
+.our-partners-mask {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.66) 0%, rgba(17, 202, 173, 0.66) 100%);
+}
+
+.menu__item-link.button {
+    @apply w-[147px] h-[40px] text-base font-bold font-body rounded-[30px] inline-flex justify-center items-center border border-solid border-primary lg:ml-4;
+}
+
+.menu-item-mobile {
+    @apply lg:hidden;
+}
+
+.content-toc {
+    @apply mb-8;
+}
+
+.content-toc ul {
+    @apply list-none pl-0;
+}
+
+.post-content p,
+.post-content ul li,
+.post-content ol li {
+    @apply text-sm md:text-[1.375rem] lg:text-base xl:text-lg 2xl:text-[1.375rem] leading-[1.25] md:leading-[1.25] lg:leading-[1.25] xl:leading-[1.25] 2xl:leading-[1.25];
+}
+
+.post-content h2 {
+    @apply text-base md:text-[1.875rem] lg:text-xl xl:text-[1.5625rem] 2xl:text-[1.875rem];
+}
+
+.post__content p+h2 {
+    @apply mt-10 mb-6;
+}
+
+.textbox-button {
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+
+
+
+.clear-input {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #aaa;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    transition: background-color 0.2s;
+}
+
+.clear-input:hover {
+    background-color: #ddd;
+}
+
+.hidden {
+    display: none;
+}

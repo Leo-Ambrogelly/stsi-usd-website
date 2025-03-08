@@ -1,0 +1,10 @@
+<div class="flex space-x-1 text-black text-sm font-body">
+    <span>in </span>
+    {{- with .GetTerms "tags" }}
+    {{- $tags := first 3 . }}
+    {{- range $index, $tag := $tags }}
+    <a class="text-current" href="{{ $tag.RelPermalink }}">#{{ $tag.LinkTitle }}</a>{{ if ne (add $index 1) (len $tags)
+    }}, {{ end }}
+    {{- end }}
+    {{- end }}
+</div>

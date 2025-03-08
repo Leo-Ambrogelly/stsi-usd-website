@@ -1,0 +1,33 @@
+{{- define "main" }}
+<div id="main" class="home pt-[26px]">
+    <div class="container w-full max-w-[710px] mx-auto">
+        {{ partial "page-header.html" . }}
+        {{- with .Params.header }}
+        {{- if .enable }}
+        <div class="max-w-[640px] mx-auto px-6 md:px-0 mb-10">
+            <p>{{ .text | safeHTML }}</p>
+        </div>
+        {{- end }}
+        {{- end }}
+        <div class="overflow-hidden mb-14 px-6 lg:px-0">
+            {{- with resources.Get .Params.image_cover }}
+            {{- with .Resize "710x webp" }}
+            <img class="w-full h-auto" loading="lazy" src="{{ .RelPermalink }}" width="{{ .Width }}"
+                height="{{ .Height }}" alt="{{ .Title }}">
+            {{- end }}
+            {{- end }}
+        </div>
+        <div class="max-w-[640px] mx-auto px-6 md:px-0">
+            <hr>
+        </div>
+        <div>
+            {{- $paginator := .Paginate (where .Site.RegularPages "Type" "blog") }}
+            {{- range $paginator.Pages }}
+            {{ partial "post-card.html" . }}
+            {{- end }}
+        </div>
+
+        {{ partial "pagination.html" . }}
+    </div>
+</div>
+{{- end }}

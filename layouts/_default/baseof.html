@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default `en-US` }}">
+{{- partial "head/head.html" . }}
+
+<body>
+  <div class="overflow-hidden lg:border-[14px] lg:border-[#0074C8] pt-9">
+    {{- partial "header/header.html" . }}
+    {{- block "main" . }}{{ end }}
+    {{- partial "footer/footer.html" . }}
+  </div>
+  <script>
+    document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(2);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth',
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

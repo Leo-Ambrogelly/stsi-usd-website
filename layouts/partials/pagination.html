@@ -1,0 +1,40 @@
+{{- $paginator := .Paginate (where .Site.RegularPages "Type" "blog") }}
+<nav class="max-w-[640px] mx-auto px-6 md:px-0">
+    <div class="py-6 relative border-b border-b-[#E5E5E5]">
+        <div class="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+            <span class="text-black text-sm font-body mx-auto">
+                Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+            </span>
+        </div>
+        <div class="flex justify-between items-center relative z-10">
+            {{- if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}"
+                class="text-primary text-sm font-body hover:underline flex items-center space-x-2">
+                <span class="w-4 flex-none">
+                    <svg class="w-full h-auto rotate-180" viewBox="0 0 16 8" fill="currentcolor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.3536 4.35355C15.5488 4.15829 15.5488 3.84171 15.3536 3.64645L12.1716 0.464466C11.9763 0.269204 11.6597 0.269204 11.4645 0.464466C11.2692 0.659728 11.2692 0.976311 11.4645 1.17157L14.2929 4L11.4645 6.82843C11.2692 7.02369 11.2692 7.34027 11.4645 7.53553C11.6597 7.7308 11.9763 7.7308 12.1716 7.53553L15.3536 4.35355ZM0 4.5H15V3.5H0V4.5Z"
+                            fill="#0074C8"></path>
+                    </svg>
+                </span>
+                <span>New posts</span>
+            </a>
+            {{- end }}
+            {{- if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}"
+                class="text-primary text-sm font-body hover:underline ml-auto flex items-center space-x-2">
+                <span>Older posts</span>
+                <span class="w-4 flex-none">
+                    <svg class="w-full h-auto" viewBox="0 0 16 8" fill="currentcolor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.3536 4.35355C15.5488 4.15829 15.5488 3.84171 15.3536 3.64645L12.1716 0.464466C11.9763 0.269204 11.6597 0.269204 11.4645 0.464466C11.2692 0.659728 11.2692 0.976311 11.4645 1.17157L14.2929 4L11.4645 6.82843C11.2692 7.02369 11.2692 7.34027 11.4645 7.53553C11.6597 7.7308 11.9763 7.7308 12.1716 7.53553L15.3536 4.35355ZM0 4.5H15V3.5H0V4.5Z"
+                            fill="#0074C8"></path>
+                    </svg>
+                </span>
+            </a>
+            {{- end }}
+        </div>
+    </div>
+</nav>

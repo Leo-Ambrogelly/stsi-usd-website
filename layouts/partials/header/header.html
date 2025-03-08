@@ -1,0 +1,114 @@
+{{- $header := .Site.Params.header }}
+<header x-data="{sideNav: false, isSearch: false}" class="header relative">
+    <div class="nav w-full bg-primary border-b border-solid border-white/5 pt-6 lg:pt-0 bg-white/5">
+        <div class="nav__container max-w-[640px] mx-auto px-6 md:px-0 relative">
+            <div class="nav__wrapper flex flex-wrap items-center justify-between">
+                <div class="nav__brand logo w-[230px] md:w-[250px] lg:w-[45%] flex-none flex items-center">
+                    <div class="w-[70px] lg:w-[100px] flex-none -translate-x-3">
+                        <a href="{{ .Site.BaseURL }}">
+                            <img class="w-full h-auto" src="/images/logo.png" alt="logo">
+                        </a>
+                    </div>
+                    {{- if .Site.Data.header.title }}
+                    <a class="text-[#003B70] text-sm md:text-base lg:text-base font-heading font-normal leading-tight"
+                        href="{{ .Site.BaseURL }}">{{ .Site.Data.header.title | safeHTML }}</a>
+                    {{- end }}
+                </div>
+                <div x-cloak
+                    class="nav__menu flex-1 fixed lg:static w-full h-screen lg:h-auto left-0 top-0 transition-all duration-300 ease-[ease] z-20"
+                    :class="sideNav ? 'visible opacity-100' : 'invisible lg:visible opacity-0 lg:opacity-100'">
+                    <nav x-data="{ selectedMenu: null, dropdownMenu: false }"
+                        class="navbar w-full h-full lg:h-auto bg-white lg:bg-transparent relative pt-[80px] lg:pt-0">
+                        <ul
+                            class="navbar__menu menu lg:flex lg:items-center lg:justify-end list-none pl-0 px-2 lg:px-0 pb-2 lg:pb-0 mb-0">
+                            {{- $currentPage := . }}
+                            {{- range $index, $menus := .Site.Menus.main }}
+                            {{- $menuURL := .URL | absLangURL }}
+                            {{- $pageURL:= $currentPage.Permalink | absLangURL }}
+                            {{- $active := eq $menuURL $pageURL }}
+                            <li @click="selectedMenu !== {{ $index }} ? selectedMenu = {{ $index }} : selectedMenu = null"
+                                class="menu__item text-center lg:text-left {{ with .Params.class }}{{ . }}{{ end }} relative group text-[#104879] text-sm font-body leading-normal mb-2 lg:mb-0 z-30 lg:border-b-2 lg:border-transparent {{ if $active }}menu-active{{ end }}">
+                                {{- if .HasChildren }}
+                                {{- if or (findRE `^#` .URL) $active }}
+                                <span {{- else }} <a href="{{- .URL | relURL -}}" {{- end }}
+                                    class="lg:w-full inline-flex items-center justify-between lg:justify-start text-current py-[7px] px-3 cursor-pointer"
+                                    {{ if findRE `^http` .URL }}target="_blank" rel="noopener" {{ end }}>
+                                    <span
+                                        class="border-b {{ if $active }}border-b-[#E5E5E5] menu-link-active{{ else }}border-b-transparent{{ end }} py-1">{{
+                                        .Name }}</span>
+                                    <svg class="transition duration-300 ease-in-out transform lg:group-hover:-rotate-180 ml-2 mt-[2px]"
+                                        :class="{'-rotate-90 lg:rotate-0': selectedMenu === {{ $index }} }" width="13"
+                                        height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.22656 1.33057L6.72656 6.83057L12.2266 1.33057" stroke="#ffffff" />
+                                    </svg>
+                                    {{- if or (findRE `^#` .URL) $active }}
+                                </span>
+                                {{- else }}
+                                </a>
+                                {{- end -}}
+                                <ul class="submenu whitespace-nowrap list-none bg-white w-full lg:w-auto top-full transition-all duration-200 ease-[ease] transform origin-top z-10 lg:shadow-md lg:rounded-lg py-3 px-[15px] my-0"
+                                    :class="selectedMenu === {{ $index }} ? 'lg:absolute static visible lg:invisible lg:group-hover:visible scale-y-100 lg:scale-y-0 lg:group-hover:scale-y-100 opacity-100 lg:opacity-0 lg:group-hover:opacity-100' : 'absolute invisible lg:group-hover:visible scale-y-0 lg:group-hover:scale-y-100 opacity-0 lg:group-hover:opacity-100'"
+                                    aria-hidden="true">
+                                    {{- range .Children }}
+                                    {{- $childURL := .URL | absLangURL }}
+                                    {{- $active := eq $childURL $pageURL }}
+                                    <li
+                                        class="submenu__item text-center lg:text-left text-[#104879] text-sm {{ if $active }}submenu-active{{ end }}">
+                                        <a class="submenu__item-link text-current font-body leading-normal"
+                                            href="{{ .URL | relURL }}" {{ if findRE `^http` .URL }}target="_blank"
+                                            rel="noopener" {{ end }}>{{ .Name }}
+                                            {{- if findRE `^http` .URL }}
+                                            {{- partial "svg/icon-up-right.svg" (dict "class" "inline-block w-3 h-3 ml-2 fill-current text-current") }}
+                                            {{- end }}
+                                        </a>
+                                    </li>
+                                    {{- end }}
+                                </ul>
+                                {{- else }}
+                                <a class="menu__item-link block text-current py-[7px] px-3" href="{{ .URL | relURL }}"
+                                    {{ if findRE `^http` .URL }}target="_blank" rel="noopener" {{ end }}>
+                                    <span
+                                        class="border-b {{ if $active }}border-b-[#E5E5E5] menu-link-active{{ else }}border-b-transparent{{ end }} py-1">{{
+                                        .Name }}</span>
+                                    {{- if findRE `^http` .URL }}
+                                    {{- partial "svg/icon-up-right.svg" (dict "class" "inline-block w-3 h-3 ml-2 fill-current text-current") }}
+                                    {{- end }}
+                                </a>
+                                {{- end }}
+                            </li>
+                            {{- end }}
+                        </ul>
+                    </nav>
+                </div>
+                <div class="flex items-center justify-end">
+                    <div class="w-6 flex-none flex items-center justify-center ml-2">
+                        <button @click="isSearch = true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                                    stroke="#0074C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="nav__toggle w-6 flex-none flex items-center justify-end lg:hidden ml-5">
+                        <button @click="sideNav = !sideNav" name="menu"
+                            class="text-[#0074C8] cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease] z-30">
+                            <svg class="fill-current transition duration-300 ease-in-out transform" width="22" height="24">
+                                <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
+                                    :class="{ 'translate-x-1.5 translate-y-0 rotate-45': sideNav === true }" id="top" x1="0"
+                                    x2="22" y1="6" y2="6"></line>
+                                <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
+                                    :class="{ 'opacity-0': sideNav === true }" id="middle" x1="0" x2="22" y1="12" y2="12">
+                                </line>
+                                <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
+                                    :class="{ '-translate-x-[11px] translate-y-[7px] -rotate-45': sideNav === true }"
+                                    id="bottom" x1="0" x2="22" y1="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{- partial "header/search-box.html" . }}
+</header>

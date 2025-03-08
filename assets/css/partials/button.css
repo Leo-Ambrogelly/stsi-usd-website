@@ -1,0 +1,35 @@
+.btn {
+    @apply w-[104px] md:w-[147px] lg:w-[98px] xl:w-[124px] 2xl:w-[149px] h-[32px] md:h-[46px] lg:h-[32px] xl:h-[38px] 2xl:h-[46px] flex justify-center items-center;
+}
+
+.btn-md {
+    @apply w-[120px] md:w-[236px] lg:w-[158px] xl:w-[198px] 2xl:w-[239px];
+}
+
+.btn-lg {
+    @apply w-[145px] md:w-[286px] lg:w-[192px] xl:w-[240px] 2xl:w-[289px] h-[26px] md:h-[50px] lg:h-[37px] xl:h-[43px] 2xl:h-[51px];
+}
+
+.btn-xl {
+    @apply w-[282px] md:w-[282px] lg:w-[225px] xl:w-[282px] 2xl:w-[341px];
+}
+
+.btn-primary {
+    @apply text-xs md:text-base 2xl:text-lg text-white font-semibold bg-primary align-middle rounded-[16px] md:rounded-[23px];
+}
+
+.btn-secondary {
+    @apply text-xs md:text-base 2xl:text-lg text-white font-semibold border-2 border-solid border-primary align-middle rounded-[16px] md:rounded-[23px];
+}
+
+.btn-tertiary {
+    @apply text-xs md:text-base 2xl:text-lg text-black font-semibold bg-white align-middle rounded-[16px] md:rounded-[23px];
+}
+
+.btn-gray {
+    @apply text-xs md:text-base 2xl:text-lg text-black font-semibold bg-[#EEEEEE] align-middle rounded-[16px] md:rounded-[23px];
+}
+
+.btn-full {
+    @apply w-full;
+}
