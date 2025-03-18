@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Contributors on STS-I at USD</title>
-    <link>/authors/</link>
+    <link>//localhost:1313/authors/</link>
     <description>Recent content in Contributors on STS-I at USD</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/authors/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

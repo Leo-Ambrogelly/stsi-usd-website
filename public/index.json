@@ -1,4 +1,12 @@
 
 {
-  "posts": []
+  "posts": [{
+      "id": 0,
+      "title": "Upcoming event - stay tuned!",
+      "summary": "Discover more about STS-I at an upcoming talk hosted by the Humanities Center. This event will be recorded for your convenience, and we’ll be sharing further details soon. Also, …",
+      "author": "Erika Atienza",
+      "date": "March 17, 2025",
+      "readingtime": 1,
+      "tags": ["updates"],"url": "//localhost:1313/stay-tuned/"
+    }]
 }
