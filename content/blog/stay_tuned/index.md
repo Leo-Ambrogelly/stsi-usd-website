@@ -6,7 +6,7 @@ slug: stay-tuned
 authors: ["Erika Atienza"]
 tags:
   - updates
-image_cover: ""
+image_cover: "USD-STS-ART-2.png"
 draft: false
 ---
 
