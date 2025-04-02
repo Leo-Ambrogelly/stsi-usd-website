@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Events on STS-I at USD</title>
+    <link>//localhost:1313/tags/events/</link>
+    <description>Recent content in Events on STS-I at USD</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 02 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/events/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inaugural meeting on April 29th</title>
+      <link>//localhost:1313/inaugural_meeting/</link>
+      <pubDate>Wed, 02 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/inaugural_meeting/</guid>
+      <description>&lt;p&gt;Discover more about STS-I at an upcoming talk hosted by the Humanities Center. This event will be recorded for your convenience, and we’ll be sharing further details soon. Also, stay tuned for proposals related to the planned curriculum for a Science and Technology Studies minor at the University of San Diego!&lt;br&gt;&lt;br&gt;&lt;/p&gt;&#xA;&lt;p&gt;The STS-I&amp;rsquo;s board of directors would like to extend their deepest gratitude to the &lt;a href=&#34;https://www.sandiego.edu/cas/centers/humanities-center/&#34;&gt;Humanities Center&lt;/a&gt; at the University of San Diego. This event would not be possible without their support.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -2,10 +2,13 @@
   "htmlElements": {
     "tags": [
       "a",
+      "blockquote",
       "body",
       "br",
       "button",
       "div",
+      "em",
+      "embed",
       "footer",
       "form",
       "h1",
@@ -23,12 +26,15 @@
       "link",
       "meta",
       "nav",
+      "object",
       "ol",
       "p",
       "path",
+      "pre",
       "script",
       "section",
       "span",
+      "strong",
       "svg",
       "textarea",
       "title",
@@ -301,13 +307,18 @@
       "about-section",
       "bottom",
       "clear-input",
+      "featuring-stanford-professor-of-anthropology-dr-lochlann-jain",
+      "ft-stanford-professor-of-anthropology-dr-lochlann-jain",
       "main",
       "middle",
       "search-input",
       "search-results",
       "support-content",
       "support-header-section",
-      "top"
+      "top",
+      "where-does-science-live",
+      "where-does-science-live-",
+      "with-stanford-professor-of-anthropology-dr-lochlann-jain"
     ]
   }
 }

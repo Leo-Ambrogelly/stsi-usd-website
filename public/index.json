@@ -2,11 +2,11 @@
 {
   "posts": [{
       "id": 0,
-      "title": "Upcoming event - stay tuned!",
-      "summary": "Discover more about STS-I at an upcoming talk hosted by the Humanities Center. This event will be recorded for your convenience, and we’ll be sharing further details soon. Also, …",
+      "title": "Inaugural Meeting on April 29th!",
+      "summary": "Where Does Science Live? Rebridging Trust Between Science, Technology, and Society with Stanford Professor of Anthropology Dr. Lochlann Jain Will be hosted in Saints Tekawitha and …",
       "author": "Erika Atienza",
-      "date": "March 17, 2025",
+      "date": "April 2, 2025",
       "readingtime": 1,
-      "tags": ["updates"],"url": "//localhost:1313/stay-tuned/"
+      "tags": ["events"],"url": "//localhost:1313/inaugural_meeting/"
     }]
 }
