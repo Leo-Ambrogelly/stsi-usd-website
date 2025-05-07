@@ -1,12 +1,4 @@
 
 {
-  "posts": [{
-      "id": 0,
-      "title": "Inaugural Meeting on April 29th!",
-      "summary": "Where Does Science Live? Rebridging Trust Between Science, Technology, and Society with Stanford Professor of Anthropology Dr. Lochlann Jain Will be hosted in Saints Tekawitha and …",
-      "author": "Erika Atienza",
-      "date": "April 2, 2025",
-      "readingtime": 1,
-      "tags": ["events"],"url": "//localhost:1313/inaugural_meeting/"
-    }]
+  "posts": []
 }
