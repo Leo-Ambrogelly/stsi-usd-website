@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import "partials/color.css";
-/* @import "partials/fonts.css"; */
+@import "partials/fonts.css";
 @import "partials/highlighter.css";
 @import "partials/button.css";
 @import "site.css";
