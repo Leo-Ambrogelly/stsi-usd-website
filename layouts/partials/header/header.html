@@ -27,7 +27,7 @@
                             {{- $pageURL:= $currentPage.Permalink | absLangURL }}
                             {{- $active := eq $menuURL $pageURL }}
                             <li @click="selectedMenu !== {{ $index }} ? selectedMenu = {{ $index }} : selectedMenu = null"
-                                class="menu__item text-center {{ with .Params.class }}{{ . }}{{ end }} relative group text-white text-xl font-heading leading-normal mb-2 lg:mb-0 z-30 lg:border-b-2 lg:border-transparent lg:text-sm lg:text-base lg:font-body {{ if $active }}menu-active{{ end }}">
+                                class="menu__item text-center {{ with .Params.class }}{{ . }}{{ end }} relative group text-white text-2xl font-heading leading-normal mb-2 lg:mb-0 z-30 lg:border-b-2 lg:border-transparent lg:text-black lg:text-base lg:font-body {{ if $active }}menu-active{{ end }}">
                                 {{- if .HasChildren }}
                                 {{- if or (findRE `^#` .URL) $active }}
                                 <span {{- else }} <a href="{{- .URL | relURL -}}" {{- end }}
@@ -53,7 +53,7 @@
                                     {{- $childURL := .URL | absLangURL }}
                                     {{- $active := eq $childURL $pageURL }}
                                     <li
-                                        class="submenu__item text-center text-white text-xl font-heading lg:text-black lg:text-base lg:font-body {{ if $active }}submenu-active{{ end }}">
+                                        class="submenu__item text-center text-white text-2xl font-heading lg:text-black lg:text-base lg:font-body {{ if $active }}submenu-active{{ end }}">
                                         <a class="submenu__item-link text-current leading-normal"
                                             href="{{ .URL | relURL }}" {{ if findRE `^http` .URL }}target="_blank"
                                             rel="noopener" {{ end }}>{{ .Name }}
