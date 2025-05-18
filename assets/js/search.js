@@ -104,7 +104,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function highlightQuery(text, query) {
         if (!query) return text; // Prevent errors if query is empty
-        const regex = new RegExp(`(${query})`, "gi");
+
+        // Escape special characters in the query to create a safe RegExp
+        const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+        const regex = new RegExp(`(${escapedQuery})`, "gi");
         return text.replace(regex, '<span class="highlight">$1</span>');
     }
 
