@@ -3,7 +3,9 @@
     <div class="container w-full max-w-[710px] mx-auto">
         {{/*  {{ partial "page-header.html" . }}  */}}
         {{- if eq .Section "blog" }}
-        <div class="max-w-[640px] mx-auto border-b border-b-[#E5E5E5] mb-10"></div>
+        <div class="px-6 lg:px-0">
+            <div class="max-w-[640px] mx-auto border-b border-b-[#E5E5E5] mb-10"></div>
+        </div>
         {{- end }}
         <div>
             {{- if eq .Section "blog" }}
