@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.getElementById("search-input");
-    const resultsContainer = document.getElementById("search-results");
+    const searchInputs = document.querySelectorAll(".search-input");
+    const resultsContainers = document.querySelectorAll(".search-results");
 
-    if (!searchInput || !resultsContainer) {
-        console.error("Search input or results container not found!");
+    if (!searchInputs.length || !resultsContainers.length) {
+        console.error("Search inputs or results containers not found!");
         return;
     }
 
@@ -31,37 +31,39 @@ document.addEventListener("DOMContentLoaded", () => {
             // Handle URL query parameter
             const params = new URLSearchParams(window.location.search);
             const query = params.get("query");
-            if (query) {
-                searchInput.value = query;
-                performSearch(query);
-            }
+
+            searchInputs.forEach((input, idx) => {
+                const container = resultsContainers[idx] || resultsContainers[0];
+                if (query) {
+                    input.value = query;
+                    performSearch(query, container);
+                }
+
+                input.addEventListener("input", () => {
+                    const q = input.value.trim();
+                    performSearch(q, container);
+                });
+            });
         })
         .catch((error) => console.error("Error loading JSON data:", error));
 
-    // Handle input changes
-    searchInput.addEventListener("input", () => {
-        const query = searchInput.value.trim();
-        performSearch(query);
-    });
-
-    function performSearch(query) {
+    function performSearch(query, container) {
         if (!miniSearch) {
-            resultsContainer.innerHTML = '<p class="text-gray-600">Search is not ready yet. Please wait...</p>';
+            container.innerHTML = '<p class="text-gray-600">Search is not ready yet. Please wait...</p>';
             return;
         }
 
         if (query.length < 2) {
-            resultsContainer.innerHTML = '<p class="text-gray-600">Please enter at least 2 characters to search.</p>';
+            container.innerHTML = '<p class="text-gray-600">Please enter at least 2 characters to search.</p>';
             return;
         }
 
-        // Perform basic search with prefix matching
         let results = miniSearch.search(query.toLowerCase(), {
             prefix: true,
             fuzzy: 0.2,
         });
 
-        resultsContainer.innerHTML = "";
+        container.innerHTML = "";
 
         if (results.length > 0) {
             results.forEach((result) => {
@@ -77,10 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span class="text-black/60 text-xs font-body">${result.date || ""}</span>
                     </div>
                 `;
-                resultsContainer.appendChild(resultItem);
+                container.appendChild(resultItem);
             });
         } else {
-            resultsContainer.innerHTML = "<p>No results found.</p>";
+            container.innerHTML = "<p>No results found.</p>";
         }
     }
 
