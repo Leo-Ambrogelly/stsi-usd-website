@@ -1,5 +1,5 @@
 {{- $header := .Site.Params.header }}
-<header x-data="{sideNav: false, isSearch: false}" class="header relative">
+<header x-data="{sideNav: false, isSearch: false}" x-effect="document.body.classList.toggle('overflow-hidden', sideNav)" class="header relative">
     <div class="nav w-full bg-primary border-b border-solid border-white/5 pt-2 lg:pt-0 bg-white/5">
         <div class="nav__container max-w-[640px] mx-auto px-6 md:px-0 relative">
             <div class="nav__wrapper flex flex-wrap items-center justify-between">
@@ -18,7 +18,7 @@
                     class="nav__menu flex-1 fixed lg:static w-full h-screen lg:h-auto left-0 top-0 transition-all duration-300 ease-[ease] z-20"
                     :class="sideNav ? 'visible opacity-100' : 'invisible lg:visible opacity-0 lg:opacity-100'">
                     <nav x-data="{ selectedMenu: null, dropdownMenu: false }"
-                        class="navbar w-full h-full lg:h-auto bg-[#003b70] lg:bg-transparent relative pt-[80px] lg:pt-0">
+                        class="navbar w-full h-full lg:h-auto bg-[#003b70] lg:bg-transparent relative flex flex-col items-center justify-start lg:block pt-[80px] lg:pt-0">
                         <ul
                             class="navbar__menu menu lg:flex lg:items-center lg:justify-end list-none pl-0 px-2 lg:px-0 pb-2 lg:pb-0 mb-0">
                             {{- $currentPage := . }}
