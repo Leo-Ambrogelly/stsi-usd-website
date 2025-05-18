@@ -1,13 +1,14 @@
-# How to Run this Site?
+# STS-I at USD Website
 
-## Run Site in local machine
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_BADGE_ID/deploy-status)](https://app.netlify.com/sites/YOUR_SITE_NAME/deploys)
 
-Direct terminal to site folder `sts-usd` or `project-name`
+The Science, Technology, & Society Initiative (STS-I) at USD aims to establish a Science and Technology Studies program. The site documents activities and information about STS-I and explores science and technology in its social, cultural, and historical contexts.
 
-install all node dependency with `npm install` or `yarn install` on terminal
+## Running Locally
 
-Run hugo site with `hugo server` or `npm run dev`
+1. Install dependencies with `npm install` or `yarn install`.
+2. Start the site with `hugo server` or `npm run dev`.
 
-## Host on Netlify
+## Hosting on Netlify
 
-read documentation here [docs](https://gohugo.io/hosting-and-deployment/hosting-on-netlify/)
+See the [Hugo documentation](https://gohugo.io/hosting-and-deployment/hosting-on-netlify/) for more details.
