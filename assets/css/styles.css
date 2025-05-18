@@ -119,3 +119,12 @@ body {
 .highlight {
     @apply bg-yellow-200;
 }
+.search-menu .search-result-item h3,
+.search-menu .search-result-item p,
+.search-menu .search-result-item span {
+    @apply text-white;
+}
+
+.search-menu .search-result-item {
+    @apply border-white/30;
+}
