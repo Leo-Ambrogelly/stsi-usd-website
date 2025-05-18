@@ -3,7 +3,7 @@ title: "Inaugural STS-I Meeting Recap"
 description: "This article highlights STS-I's inaugural event-'Where Does Science Live? Rebridging Trust Between Science, Technology & Society'-which brought students, faculty, and guest speaker Dr. Lochlann Jain together to explore how scientific knowledge is intertwined with social context. It sets the stage for an exciting slate of future programs as the Initiative deepens campus-wide conversations at USD."
 date: 2025-05-18T15:36:24+00:00
 slug: inaugural-meeting-recap
-authors: ["Erika Atienza"]
+authors: ["Erika Atienza", "Leo Ambrogelly"]
 tags:
   - recap
   - update
