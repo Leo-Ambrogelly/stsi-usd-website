@@ -29,7 +29,8 @@
                     </div>
                     <div x-show="openIndex === {{ $index }}" class="pt-5">
                         {{- with .description }}
-                        <p>{{ . }}</p>
+                        {{- $include_dict := dict "content" . }}
+                        {{ partial "markdownify.html" $include_dict }}
                         {{- end }}
                     </div>
                 </div>
