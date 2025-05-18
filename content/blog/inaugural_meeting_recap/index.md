@@ -17,3 +17,5 @@ The evening's featured speaker, Lochlann Jain, PhD-Professor of Anthropology at 
 STS-I was proud to co-host the program with USD's Humanities Center, the Department of Philosophy, and the Biomedical Ethics Program. Their support reflects a shared commitment to cultivating scientifically literate, socially responsible leaders. Attendees also earned COMPASS, CONNECT, and PASSPORT co-curricular credit-demonstrating alignment between the initiative's objectives and the University of San Diego's socially-responsible priorities.
 
 Stay tuned-more speaker events, workshops, and announcements are on the horizon as STS-I continues to collaborate with students, staff, and faculty across the University of San Diego. Connect with us to join the movement!
+
+{{< pdf src="STS_April_29_Poster.pdf" title="STS-I April 29 Poster" ratio="1.3" >}}
