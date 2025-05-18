@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
-    const clearInput = document.getElementById("clear-input");
     const resultsContainer = document.getElementById("search-results");
 
-    if (!searchInput || !clearInput || !resultsContainer) {
-        console.error("Search input, clear button, or results container not found!");
+    if (!searchInput || !resultsContainer) {
+        console.error("Search input or results container not found!");
         return;
     }
 
@@ -42,25 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Handle input changes
     searchInput.addEventListener("input", () => {
         const query = searchInput.value.trim();
-        toggleClearButton(query);
         performSearch(query);
     });
-
-    // Clear input on button click
-    clearInput.addEventListener("click", () => {
-        searchInput.value = "";
-        toggleClearButton("");
-        resultsContainer.innerHTML = '<p class="text-gray-600">Please enter a search query.</p>';
-    });
-
-    // Show/hide the clear button
-    function toggleClearButton(query) {
-        if (query) {
-            clearInput.classList.remove("hidden");
-        } else {
-            clearInput.classList.add("hidden");
-        }
-    }
 
     function performSearch(query) {
         if (!miniSearch) {
