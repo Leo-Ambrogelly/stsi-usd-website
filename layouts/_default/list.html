@@ -1,6 +1,9 @@
 {{- define "main" }}
 <div id="main" class="page-list pt-10">
     <div class="container w-full max-w-[710px] mx-auto">
+        {{- if eq .Section "blog" }}
+        <div class="max-w-[640px] mx-auto border-b border-b-[#E5E5E5] mb-10"></div>
+        {{- end }}
         <div>
             {{- $paginator := .Paginate .Data.Pages }}
             {{- range $paginator.Pages }}
