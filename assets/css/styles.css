@@ -32,9 +32,6 @@ body {
     background: linear-gradient(180deg, #1B4B44 31.5%, #000000 96.5%);
 }
 
-.footer-support-bg {
-    background: linear-gradient(180deg, #0B0B0B 0%, rgba(113, 113, 113, 0) 100%);
-}
 
 .footer-newsletter-bg {
     background: linear-gradient(180deg, #11CAAD 0%, rgba(8, 100, 86, 0.29) 100%);
