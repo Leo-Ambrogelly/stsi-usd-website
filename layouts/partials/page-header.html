@@ -8,7 +8,7 @@
         </div>
         <div class="inline-block">
             <a class="flex items-center space-x-4 border-2 border-primary rounded-[4px] text-primary text-sm font-body pt-3 pb-[10px] px-2"
-                href="{{ with .Site.Data.page_header.button_link }}{{ . }}{{ end }}">
+                href="{{ with .Site.Data.page_header.button_link }}{{ . }}{{ end }}" target="_blank" rel="noopener">
                 {{- with .Site.Data.page_header.button_text }}
                 <span class="leading-none">{{ . }}</span>
                 {{- end }}
