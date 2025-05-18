@@ -81,39 +81,13 @@ body {
 
 
 
-.clear-input {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-size: 18px;
-    color: #aaa;
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #f5f5f5;
-    transition: background-color 0.2s;
-}
-
-.clear-input:hover {
-    background-color: #ddd;
-}
 
 .hidden {
     display: none;
 }
 
 .search-result-item {
-    @apply border-b border-gray-200 pb-4;
-}
-
-.search-result-item:last-child {
-    @apply border-none;
+    @apply border border-gray-200 rounded-md p-4 bg-white shadow-sm;
 }
 
 .highlight {
