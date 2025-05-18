@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode | default `en-US` }}">
 {{- partial "head/head.html" . }}
 
-<body>
+<body id="page-top">
   <div class="overflow-hidden lg:border-[14px] lg:border-[#0074C8] pt-9">
     {{- partial "header/header.html" . }}
     {{- block "main" . }}{{ end }}
@@ -15,8 +15,12 @@
         const targetId = this.getAttribute('href').substring(2);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
+          let offset = targetElement.offsetTop - 80;
+          if (targetId === 'page-top') {
+            offset = 0;
+          }
           window.scrollTo({
-            top: targetElement.offsetTop - 80,
+            top: offset,
             behavior: 'smooth',
           });
         }
