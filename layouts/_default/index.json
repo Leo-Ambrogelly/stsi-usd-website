@@ -7,19 +7,10 @@
       "id": {{ $index | jsonify }},
       "title": {{ $post.Title | jsonify }},
       "summary": {{ $post.Summary | plainify | safeHTML | truncate 180 | jsonify }},
-      "author": {{ index $post.Params.authors 0 | jsonify }},
-      "date": {{ $post.Date | time.Format ":date_long" | jsonify }},
-      "readingtime": {{ .ReadingTime | jsonify }},
-      "tags": {{ $post.Params.tags | jsonify }},
-    {{- if $post.Params.image }}
-    {{- if fileExists (add `assets/` (string $post.Params.image)) }}
-    {{- $image_src:= resources.Get $post.Params.image }}
-    {{- $image:= $image_src.Fill "450x290 webp q100" }}
-    {{- $image_list:= $image_src.Fill "450x378 webp q100" }}
-      "image": {{ $image.RelPermalink | jsonify }},
-      "cover": {{ $image_list.RelPermalink | jsonify }},
-    {{- end -}}
-    {{- end -}}
+      "content": {{ $post.Plain | jsonify }},
+      "author": {{ index $post.Params.authors 0 | default "" | jsonify }},
+      "date": {{ with $post.Date }}{{ . | time.Format ":date_long" | jsonify }}{{ else }}""{{ end }},
+      "tags": {{ $post.Params.tags | default slice | jsonify }},
       "url": {{ $post.Permalink | jsonify }}
     }
   {{- end -}}

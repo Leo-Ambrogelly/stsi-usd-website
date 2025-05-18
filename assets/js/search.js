@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const posts = data.posts;
 
             miniSearch = new MiniSearch({
-                fields: ["title", "summary", "tags"], // Fields to index
-                storeFields: ["title", "summary", "url", "author", "date"], // Fields to store in search results
+                fields: ["title", "content", "tags"], // Fields to index
+                storeFields: ["title", "summary", "content", "url", "author", "date"], // Fields to store in search results
                 tokenize: (text) => {
                     return text
                         .toLowerCase()
@@ -75,29 +75,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Perform basic search with prefix matching
         let results = miniSearch.search(query.toLowerCase(), {
-            prefix: true, // Enable prefix search
-            fuzzy: 0, // Disable fuzzy search for accuracy
+            prefix: true,
+            fuzzy: 0.2,
         });
-
-        // Apply additional filter for exact match if query is longer than 3 characters
-        if (query.length > 3) {
-            results = results.filter((result) =>
-                result.title.toLowerCase().includes(query.toLowerCase())
-            );
-        }
 
         resultsContainer.innerHTML = "";
 
         if (results.length > 0) {
             results.forEach((result) => {
                 const resultItem = document.createElement("div");
-                resultItem.classList.add("search-result");
+                resultItem.classList.add("search-result-item");
+                const snippet = createSnippet(result.content, query);
                 resultItem.innerHTML = `
-                    <h3 class="text-[#0E4678] text-xl font-heading font-medium mb-1">
+                    <h3 class="text-primary text-xl font-heading font-medium mb-1">
                         <a class="text-current" href="${result.url}">${highlightQuery(result.title, query)}</a>
                     </h3>
-                    <div class="mb-5">
-                        <span class="text-black/60 text-xs font-body">${result.date}</span>
+                    <p class="text-sm mb-2">${snippet}</p>
+                    <div class="mb-2">
+                        <span class="text-black/60 text-xs font-body">${result.date || ""}</span>
                     </div>
                 `;
                 resultsContainer.appendChild(resultItem);
@@ -111,5 +106,19 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!query) return text; // Prevent errors if query is empty
         const regex = new RegExp(`(${query})`, "gi");
         return text.replace(regex, '<span class="highlight">$1</span>');
+    }
+
+    function createSnippet(text, term) {
+        if (!text) return "";
+        const lowerText = text.toLowerCase();
+        const lowerTerm = term.toLowerCase();
+        const index = lowerText.indexOf(lowerTerm);
+        if (index === -1) {
+            return text.substring(0, 150) + "...";
+        }
+        const start = Math.max(0, index - 75);
+        const end = Math.min(text.length, index + 75);
+        const snippet = text.substring(start, end);
+        return highlightQuery(snippet, term) + "...";
     }
 });
