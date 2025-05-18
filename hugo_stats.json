@@ -251,8 +251,6 @@
       "space-y-6",
       "stroke-2",
       "stroke-current",
-      "support-content-section",
-      "support-header-section",
       "text-2xl",
       "text-4xl",
       "text-[#003B70]",
@@ -301,8 +299,6 @@
       "middle",
       "search-input",
       "search-results",
-      "support-content",
-      "support-header-section",
       "top"
     ]
   }
