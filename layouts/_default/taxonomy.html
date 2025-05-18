@@ -1,4 +1,7 @@
 {{- define "main" }}
+    {{- if and (eq .Kind "taxonomy") (eq .Data.Plural "tags") }}
+        <meta http-equiv="refresh" content="0; url=/" />
+    {{- else }}
 <div id="main" class="page-taxonomy pt-[26px]">
     <div class="container w-full max-w-[710px] mx-auto">
         {{/*  {{ partial "page-header.html" . }}  */}}
@@ -50,4 +53,5 @@
         </nav>
     </div>
 </div>
+    {{- end }}
 {{- end }}
