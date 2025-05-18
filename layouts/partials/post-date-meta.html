@@ -1,3 +1,12 @@
-<div class="mb-5">
-    <span class="text-black text-sm font-body">{{ .Date | time.Format ":date_long" }}</span>
+<div class="mb-5 text-black text-sm font-body">
+    <span>{{ .Date | time.Format ":date_long" }}</span>
+    {{- with .GetTerms "authors" }}
+        <span class="mx-1">&middot;</span>
+        <span>by
+        {{- $authors := . }}
+        {{- range $index, $author := $authors }}
+            <a class="text-current" href="{{ $author.RelPermalink }}">{{ $author.LinkTitle }}</a>{{ if ne (add $index 1) (len $authors) }}, {{ end }}
+        {{- end -}}
+        </span>
+    {{- end }}
 </div>
