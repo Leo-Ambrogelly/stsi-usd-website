@@ -10,8 +10,10 @@
                         </a>
                     </div>
                     {{- if .Site.Data.header.title }}
-                    <a class="text-[#003B70] text-sm md:text-base lg:text-base font-heading font-normal leading-tight"
-                        href="{{ .Site.BaseURL }}">{{ .Site.Data.header.title | safeHTML }}</a>
+                    <span class="text-[#003B70] text-sm md:text-base lg:text-base font-heading font-normal leading-tight">
+                        <a href="{{ .Site.BaseURL }}">The Science, Technology, and Society Initiative at the </a>
+                        <a href="https://sandiego.edu" target="_blank" rel="noopener">University of San Diego</a>
+                    </span>
                     {{- end }}
                 </div>
                 <div x-cloak
