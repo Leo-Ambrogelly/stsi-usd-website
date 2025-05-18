@@ -92,7 +92,8 @@
                     </div>
                     <div class="nav__toggle w-6 flex-none flex items-center justify-end lg:hidden ml-5">
                         <button @click="sideNav = !sideNav" name="menu"
-                            class="text-[#0074C8] cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease] z-30">
+                            class="cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease] z-30"
+                            :class="sideNav ? 'text-white' : 'text-[#0074C8]'">
                             <svg class="fill-current transition duration-300 ease-in-out transform" width="22" height="24">
                                 <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
                                     :class="{ 'translate-x-1.5 translate-y-0 rotate-45': sideNav === true }" id="top" x1="0"
