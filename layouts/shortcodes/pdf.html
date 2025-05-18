@@ -1,6 +1,26 @@
 {{ $src := .Get "src" }}
 {{ $title := .Get "title" | default "PDF viewer" }}
 {{ $height := .Get "height" | default "600px" }}
+{{ $ratio := .Get "ratio" }}
+{{ $id := printf "pdf-%d" (now.UnixNano) }}
 <div class="my-6">
-  <iframe src="{{ $src }}" title="{{ $title }}" class="w-full border border-gray-200 rounded" style="height: {{ $height }};" allow="autoplay"></iframe>
+  <iframe id="{{ $id }}" src="{{ $src }}#view=FitH" title="{{ $title }}" class="w-full border border-gray-200 rounded" style="height: {{ $height }};" allow="autoplay"></iframe>
 </div>
+{{ if $ratio }}
+<script>
+(function(){
+  var id = {{ printf "%q" $id }};
+  var ratio = parseFloat({{ printf "%q" $ratio }});
+  function adjust(){
+    var iframe = document.getElementById(id);
+    if(!iframe) return;
+    var width = iframe.offsetWidth;
+    if(width > 0 && !isNaN(ratio)){
+      iframe.style.height = (width * ratio) + 'px';
+    }
+  }
+  window.addEventListener('load', adjust);
+  window.addEventListener('resize', adjust);
+})();
+</script>
+{{ end }}
