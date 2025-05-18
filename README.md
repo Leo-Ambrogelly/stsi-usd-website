@@ -8,3 +8,13 @@ The Science, Technology, & Society Initiative (STS-I) at USD aims to establish a
 
 1. Install dependencies with `npm install` or `yarn install`.
 2. Start the site with `hugo server` or `npm run dev`.
+
+## Embedding PDFs in Posts
+
+Use the `pdf` shortcode to display PDF files within blog posts.
+
+```
+{{</* pdf src="/path/to/file.pdf" title="Descriptive title" height="600px" */>}}
+```
+
+`src` is the path to the PDF (relative to the site root), `title` is optional, and `height` sets the viewer height.

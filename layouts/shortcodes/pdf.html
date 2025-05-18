@@ -1,0 +1,6 @@
+{{ $src := .Get "src" }}
+{{ $title := .Get "title" | default "PDF viewer" }}
+{{ $height := .Get "height" | default "600px" }}
+<div class="my-6">
+  <iframe src="{{ $src }}" title="{{ $title }}" class="w-full border border-gray-200 rounded" style="height: {{ $height }};" allow="autoplay"></iframe>
+</div>
