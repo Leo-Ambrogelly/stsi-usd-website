@@ -18,7 +18,7 @@
                     class="nav__menu flex-1 fixed lg:static w-full h-screen lg:h-auto left-0 top-0 transition-all duration-300 ease-[ease] z-20"
                     :class="sideNav ? 'visible opacity-100' : 'invisible lg:visible opacity-0 lg:opacity-100'">
                     <nav x-data="{ selectedMenu: null, dropdownMenu: false }"
-                        class="navbar w-full h-full lg:h-auto bg-white lg:bg-transparent relative pt-[80px] lg:pt-0">
+                        class="navbar w-full h-full lg:h-auto bg-[#003b70] lg:bg-transparent relative pt-[80px] lg:pt-0">
                         <ul
                             class="navbar__menu menu lg:flex lg:items-center lg:justify-end list-none pl-0 px-2 lg:px-0 pb-2 lg:pb-0 mb-0">
                             {{- $currentPage := . }}
@@ -27,7 +27,7 @@
                             {{- $pageURL:= $currentPage.Permalink | absLangURL }}
                             {{- $active := eq $menuURL $pageURL }}
                             <li @click="selectedMenu !== {{ $index }} ? selectedMenu = {{ $index }} : selectedMenu = null"
-                                class="menu__item text-center lg:text-left {{ with .Params.class }}{{ . }}{{ end }} relative group text-[#104879] text-sm font-body leading-normal mb-2 lg:mb-0 z-30 lg:border-b-2 lg:border-transparent {{ if $active }}menu-active{{ end }}">
+                                class="menu__item text-left {{ with .Params.class }}{{ . }}{{ end }} relative group text-white text-2xl font-heading leading-normal mb-2 lg:mb-0 z-30 lg:border-b-2 lg:border-transparent lg:text-black lg:text-base lg:font-body {{ if $active }}menu-active{{ end }}">
                                 {{- if .HasChildren }}
                                 {{- if or (findRE `^#` .URL) $active }}
                                 <span {{- else }} <a href="{{- .URL | relURL -}}" {{- end }}
@@ -46,15 +46,15 @@
                                 {{- else }}
                                 </a>
                                 {{- end -}}
-                                <ul class="submenu whitespace-nowrap list-none bg-white w-full lg:w-auto top-full transition-all duration-200 ease-[ease] transform origin-top z-10 lg:shadow-md lg:rounded-lg py-3 px-[15px] my-0"
+                                <ul class="submenu whitespace-nowrap list-none bg-[#003b70] w-full lg:w-auto top-full transition-all duration-200 ease-[ease] transform origin-top z-10 lg:shadow-md lg:rounded-lg py-3 px-[15px] my-0"
                                     :class="selectedMenu === {{ $index }} ? 'lg:absolute static visible lg:invisible lg:group-hover:visible scale-y-100 lg:scale-y-0 lg:group-hover:scale-y-100 opacity-100 lg:opacity-0 lg:group-hover:opacity-100' : 'absolute invisible lg:group-hover:visible scale-y-0 lg:group-hover:scale-y-100 opacity-0 lg:group-hover:opacity-100'"
                                     aria-hidden="true">
                                     {{- range .Children }}
                                     {{- $childURL := .URL | absLangURL }}
                                     {{- $active := eq $childURL $pageURL }}
                                     <li
-                                        class="submenu__item text-center lg:text-left text-[#104879] text-sm {{ if $active }}submenu-active{{ end }}">
-                                        <a class="submenu__item-link text-current font-body leading-normal"
+                                        class="submenu__item text-left text-white text-2xl font-heading lg:text-black lg:text-base lg:font-body {{ if $active }}submenu-active{{ end }}">
+                                        <a class="submenu__item-link text-current leading-normal"
                                             href="{{ .URL | relURL }}" {{ if findRE `^http` .URL }}target="_blank"
                                             rel="noopener" {{ end }}>{{ .Name }}
                                             {{- if findRE `^http` .URL }}
