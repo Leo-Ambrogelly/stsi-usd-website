@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode | default `en-US` }}">
 {{- partial "head/head.html" . }}
 
-<body>
+<body class="page-transition">
   <div class="overflow-hidden lg:border-[14px] lg:border-[#0074C8] pt-9">
     {{- partial "header/header.html" . }}
     {{- block "main" . }}{{ end }}
