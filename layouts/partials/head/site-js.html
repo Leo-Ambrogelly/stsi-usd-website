@@ -4,8 +4,9 @@
 {{- $persist := resources.Get "js/vendor/persist/dist/cdn.min.js" }}
 {{- $minisearch := resources.Get "js/vendor/minisearch/dist/umd/index.js" }}
 {{- $search := resources.Get "js/search.js" }}
+{{- $transition := resources.Get "js/page-transition.js" }}
 
 <!-- Combine JS -->
-{{- $js := slice $persist $collapse $minisearch $search $alpine | resources.Concat "js/main.js" }}
+{{- $js := slice $persist $collapse $minisearch $search $transition $alpine | resources.Concat "js/main.js" }}
 {{- $js_min := $js | resources.Minify }}
 <script defer src="{{ $js_min.RelPermalink }}"></script>

@@ -1,0 +1,13 @@
+body.page-transition {
+  opacity: 0;
+}
+
+body.page-transition.page-loaded {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+body.page-transition.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
