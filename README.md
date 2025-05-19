@@ -17,4 +17,4 @@ Use the `pdf` shortcode to display PDF files within blog posts.
 {{</* pdf src="/path/to/file.pdf" title="Descriptive title" height="600px" */>}}
 ```
 
-`src` is the path to the PDF (relative to the site root), `title` is optional, and `height` sets the viewer height.
+`src` is the path to the PDF (relative to the site root), `title` is optional, and `height` sets the viewer height. Embedded PDFs are loaded with the `Fit` view so the entire document page is always visible regardless of screen size.

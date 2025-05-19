@@ -4,7 +4,7 @@
 {{ $ratio := .Get "ratio" }}
 {{ $id := printf "pdf-%d" (now.UnixNano) }}
 <div class="my-6">
-  <iframe id="{{ $id }}" src="{{ $src }}#view=FitH" title="{{ $title }}" class="w-full border border-gray-200 rounded" style="height: {{ $height }};" allow="autoplay"></iframe>
+  <iframe id="{{ $id }}" src="{{ $src }}#view=Fit" title="{{ $title }}" class="w-full border border-gray-200 rounded" style="height: {{ $height }};" allow="autoplay"></iframe>
 </div>
 {{ if $ratio }}
 <script>
