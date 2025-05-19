@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "hugo server --disableFastRender",
-        "build": "hugo --gc --minify",
+        "build": "hugo --gc --minify && npx pagefind --site \"public\"",
         "clean": "hugo --cleanDestinationDir",
         "start": "hugo server --bind 192.168.0.104 --baseURL http://192.168.0.104"
     },

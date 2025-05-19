@@ -1,3 +1,6 @@
+// Search functionality using Pagefind
+// Keeps existing DOM structure with .search-input elements and .search-results containers
+
 document.addEventListener("DOMContentLoaded", () => {
     const searchInputs = document.querySelectorAll(".search-input");
     const resultsContainers = document.querySelectorAll(".search-results");
@@ -7,49 +10,40 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    let miniSearch;
-
-    // Fetch JSON and initialize MiniSearch
-    const indexUrl = new URL((window.__BASE_URL__ || "/") + "index.json", window.location.origin);
-    fetch(indexUrl)
-        .then((response) => response.json())
-        .then((data) => {
-            const posts = data.posts;
-
-            miniSearch = new MiniSearch({
-                fields: ["title", "content", "tags"], // Fields to index
-                storeFields: ["title", "summary", "content", "url", "author", "date"], // Fields to store in search results
-                tokenize: (text) => {
-                    return text
-                        .toLowerCase()
-                        .split(/[\s,]+/)
-                        .map((token) => token.trim());
-                },
-            });
-
-            miniSearch.addAll(posts);
-
-            // Handle URL query parameter
-            const params = new URLSearchParams(window.location.search);
-            const query = params.get("query");
-
-            searchInputs.forEach((input, idx) => {
-                const container = resultsContainers[idx] || resultsContainers[0];
-                if (query) {
-                    input.value = query;
-                    performSearch(query, container);
+    // Wait for Pagefind to be available
+    const pagefindReady = new Promise((resolve) => {
+        if (window.pagefind) {
+            resolve(window.pagefind);
+        } else {
+            const check = setInterval(() => {
+                if (window.pagefind) {
+                    clearInterval(check);
+                    resolve(window.pagefind);
                 }
+            }, 50);
+        }
+    });
 
-                input.addEventListener("input", () => {
-                    const q = input.value.trim();
-                    performSearch(q, container);
-                });
+    pagefindReady.then((pagefind) => {
+        const params = new URLSearchParams(window.location.search);
+        const initialQuery = params.get("query");
+
+        searchInputs.forEach((input, idx) => {
+            const container = resultsContainers[idx] || resultsContainers[0];
+            if (initialQuery) {
+                input.value = initialQuery;
+                performSearch(initialQuery, container, pagefind);
+            }
+
+            input.addEventListener("input", () => {
+                const q = input.value.trim();
+                performSearch(q, container, pagefind);
             });
-        })
-        .catch((error) => console.error("Error loading JSON data:", error));
+        });
+    });
 
-    function performSearch(query, container) {
-        if (!miniSearch) {
+    async function performSearch(query, container, pagefind) {
+        if (!pagefind) {
             container.innerHTML = '<p class="text-gray-600">Search is not ready yet. Please wait...</p>';
             return;
         }
@@ -59,40 +53,36 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        let results = miniSearch.search(query.toLowerCase(), {
-            prefix: true,
-            fuzzy: 0.2,
-        });
-
+        const results = await pagefind.search(query.toLowerCase());
         container.innerHTML = "";
 
-        if (results.length > 0) {
-            results.forEach((result) => {
+        if (results.results.length > 0) {
+            for (const result of results.results) {
+                const data = await result.data();
                 const resultItem = document.createElement("div");
                 resultItem.classList.add("search-result-item");
-                const snippet = createSnippet(result.content, query);
+                const snippet = createSnippet(data.excerpt || data.content || "", query);
+                const title = data.meta?.title || data.title || "";
+                const date = data.meta?.date || data.date || "";
                 resultItem.innerHTML = `
                     <h3 class="text-primary text-xl font-heading font-medium mb-1">
-                        <a class="text-current" href="${result.url}">${highlightQuery(result.title, query)}</a>
+                        <a class="text-current" href="${data.url}">${highlightQuery(title, query)}</a>
                     </h3>
                     <p class="text-sm mb-2">${snippet}</p>
                     <div class="mb-2">
-                        <span class="text-black/60 text-xs font-body">${result.date || ""}</span>
+                        <span class="text-black/60 text-xs font-body">${date}</span>
                     </div>
                 `;
                 container.appendChild(resultItem);
-            });
+            }
         } else {
             container.innerHTML = "<p>No results found.</p>";
         }
     }
 
     function highlightQuery(text, query) {
-        if (!query) return text; // Prevent errors if query is empty
-
-        // Escape special characters in the query to create a safe RegExp
+        if (!query) return text;
         const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
         const regex = new RegExp(`(${escapedQuery})`, "gi");
         return text.replace(regex, '<span class="highlight">$1</span>');
     }
@@ -111,3 +101,4 @@ document.addEventListener("DOMContentLoaded", () => {
         return highlightQuery(snippet, term) + "...";
     }
 });
+
