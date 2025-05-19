@@ -107,6 +107,4 @@ module:
       target: assets/js/vendor/collapse
     - source: node_modules/@alpinejs/persist
       target: assets/js/vendor/persist
-    - source: node_modules/minisearch
-      target: assets/js/vendor/minisearch
       
