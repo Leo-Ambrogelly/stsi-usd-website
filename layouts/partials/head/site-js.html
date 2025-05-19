@@ -8,4 +8,5 @@
 <!-- Combine JS -->
 {{- $js := slice $persist $collapse $minisearch $search $alpine | resources.Concat "js/main.js" }}
 {{- $js_min := $js | resources.Minify }}
+<script>window.__BASE_URL__ = '{{ "/" | relURL }}';</script>
 <script defer src="{{ $js_min.RelPermalink }}"></script>
