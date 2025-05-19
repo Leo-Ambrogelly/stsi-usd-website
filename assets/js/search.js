@@ -12,22 +12,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let pagefindInstance = null;
     // Wait for Pagefind to be available
-    const pagefindReady = new Promise((resolve) => {
+    const pagefindReady = new Promise((resolve, reject) => {
         if (window.pagefind) {
             resolve(window.pagefind);
-        } else {
-            const check = setInterval(() => {
-                if (window.pagefind) {
-                    clearInterval(check);
-                    resolve(window.pagefind);
-                }
-            }, 50);
+            return;
         }
+        const start = Date.now();
+        const check = setInterval(() => {
+            if (window.pagefind) {
+                clearInterval(check);
+                resolve(window.pagefind);
+            } else if (Date.now() - start > 2000) {
+                clearInterval(check);
+                reject(new Error("Pagefind failed to load"));
+            }
+        }, 50);
     });
 
-    pagefindReady.then((pagefind) => {
-        pagefindInstance = pagefind;
-    });
+    pagefindReady
+        .then((pagefind) => {
+            pagefindInstance = pagefind;
+        })
+        .catch(() => {
+            resultsContainers.forEach((c) => {
+                c.innerHTML = '<p class="text-gray-600">Search is currently unavailable.</p>';
+            });
+        });
 
     const params = new URLSearchParams(window.location.search);
     const initialQuery = params.get("query");
