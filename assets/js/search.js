@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let miniSearch;
 
     // Fetch JSON and initialize MiniSearch
-    fetch("/index.json")
+    const basePath = window.__BASE_URL__ || "/";
+    fetch(basePath + "index.json")
         .then((response) => response.json())
         .then((data) => {
             const posts = data.posts;
