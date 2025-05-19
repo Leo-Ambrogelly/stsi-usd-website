@@ -11,10 +11,10 @@
   <script>
     document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        e.preventDefault();
         const targetId = this.getAttribute('href').substring(2);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
+          e.preventDefault();
           let offset = targetElement.offsetTop - 80;
           if (targetId === 'page-top') {
             offset = 0;
