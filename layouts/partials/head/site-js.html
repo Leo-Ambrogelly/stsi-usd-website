@@ -8,5 +8,5 @@
 {{- $js := slice $persist $collapse $search $alpine | resources.Concat "js/main.js" }}
 {{- $js_min := $js | resources.Minify }}
 <script>window.__BASE_URL__ = '{{ "/" | relURL }}';</script>
-<script type="module" defer src="{{ "pagefind/pagefind.js" | relURL }}"></script>
+<script type="module" defer src="{{ "/pagefind/pagefind.js" | absURL }}"></script>
 <script defer src="{{ $js_min.RelPermalink }}"></script>
