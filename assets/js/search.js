@@ -1,4 +1,4 @@
-// Search functionality using Pagefind
+// Search functionality using HugoFastSearch
 // Keeps existing DOM structure with .search-input elements and .search-results containers
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,43 +10,32 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    let pagefindInstance = null;
-    // Wait for Pagefind to be available
-    const pagefindReady = new Promise((resolve) => {
-        if (window.pagefind) {
-            resolve(window.pagefind);
-        } else {
-            const check = setInterval(() => {
-                if (window.pagefind) {
-                    clearInterval(check);
-                    resolve(window.pagefind);
-                }
-            }, 50);
-        }
-    });
+    function initSearch() {
+        const params = new URLSearchParams(window.location.search);
+        const initialQuery = params.get("query");
 
-    pagefindReady.then((pagefind) => {
-        pagefindInstance = pagefind;
-    });
+        searchInputs.forEach((input, idx) => {
+            const container = resultsContainers[idx] || resultsContainers[0];
+            if (initialQuery) {
+                input.value = initialQuery;
+                performSearch(initialQuery, container);
+            }
 
-    const params = new URLSearchParams(window.location.search);
-    const initialQuery = params.get("query");
-
-    searchInputs.forEach((input, idx) => {
-        const container = resultsContainers[idx] || resultsContainers[0];
-        if (initialQuery) {
-            input.value = initialQuery;
-            performSearch(initialQuery, container);
-        }
-
-        input.addEventListener("input", () => {
-            const q = input.value.trim();
-            performSearch(q, container);
+            input.addEventListener("input", () => {
+                const q = input.value.trim();
+                performSearch(q, container);
+            });
         });
-    });
+    }
 
-    async function performSearch(query, container) {
-        if (!pagefindInstance) {
+    if (window.hugofastsearch && window.hugofastsearch.isReady()) {
+        initSearch();
+    } else if (window.hugofastsearch) {
+        window.hugofastsearch._onready = initSearch;
+    }
+
+    function performSearch(query, container) {
+        if (!window.hugofastsearch || !window.hugofastsearch.isReady()) {
             container.innerHTML = '<p class="text-gray-600">Search is not ready yet. Please wait...</p>';
             return;
         }
@@ -56,20 +45,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const results = await pagefindInstance.search(query.toLowerCase());
+        const results = window.hugofastsearch.search(query.toLowerCase());
         container.innerHTML = "";
 
-        if (results.results.length > 0) {
-            for (const result of results.results) {
-                const data = await result.data();
+        if (results.length > 0) {
+            for (const result of results) {
                 const resultItem = document.createElement("div");
                 resultItem.classList.add("search-result-item");
-                const snippet = createSnippet(data.excerpt || data.content || "", query);
-                const title = data.meta?.title || data.title || "";
-                const date = data.meta?.date || data.date || "";
+                const snippet = createSnippet(result.content || "", query);
+                const title = result.title || "";
+                const date = result.date || "";
                 resultItem.innerHTML = `
                     <h3 class="text-primary text-xl font-heading font-medium mb-1">
-                        <a class="text-current" href="${data.url}">${highlightQuery(title, query)}</a>
+                        <a class="text-current" href="${result.url}">${highlightQuery(title, query)}</a>
                     </h3>
                     <p class="text-sm mb-2">${snippet}</p>
                     <div class="mb-2">
@@ -104,4 +92,3 @@ document.addEventListener("DOMContentLoaded", () => {
         return highlightQuery(snippet, term) + "...";
     }
 });
-

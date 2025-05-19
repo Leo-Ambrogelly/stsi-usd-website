@@ -2,11 +2,12 @@
 {{- $alpine := resources.Get "js/vendor/alpinejs/dist/cdn.min.js" }}
 {{- $collapse := resources.Get "js/vendor/collapse/dist/cdn.min.js" }}
 {{- $persist := resources.Get "js/vendor/persist/dist/cdn.min.js" }}
+{{- $minisearch := resources.Get "js/minisearch.js" }}
+{{- $fastsearch := resources.Get "js/hugofastsearch.js" }}
 {{- $search := resources.Get "js/search.js" }}
 
 <!-- Combine JS -->
-{{- $js := slice $persist $collapse $search $alpine | resources.Concat "js/main.js" }}
+{{- $js := slice $persist $collapse $minisearch $fastsearch $search $alpine | resources.Concat "js/main.js" }}
 {{- $js_min := $js | resources.Minify }}
 <script>window.__BASE_URL__ = '{{ "/" | relURL }}';</script>
-<script type="module" defer src="{{ "/pagefind/pagefind.js" | absURL }}"></script>
 <script defer src="{{ $js_min.RelPermalink }}"></script>
