@@ -7,7 +7,14 @@
         </div>
         <header class="max-w-[640px] mx-auto text-center mb-8">
             <h1 class="text-[#0E4678] text-4xl font-heading font-normal mb-4">Posts tagged <span class="font-semibold">#{{ .Title }}</span></h1>
-            <a class="text-white text-sm font-body bg-black py-1 px-2 rounded-[4px]" href="/">View All Posts</a>
+            <a class="inline-flex items-center space-x-4 border-2 border-primary rounded-[4px] text-primary text-sm font-body pt-3 pb-[10px] px-2 transition-colors duration-300 ease-[ease] hover:bg-[#0074c8] hover:text-white hover:border-[#0074c8]" href="/">
+                <span class="leading-none">View All Posts</span>
+                <span class="w-4 flex-none">
+                    <svg class="w-full h-auto" viewBox="0 0 16 8" fill="currentcolor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.3536 4.35355C15.5488 4.15829 15.5488 3.84171 15.3536 3.64645L12.1716 0.464466C11.9763 0.269204 11.6597 0.269204 11.4645 0.464466C11.2692 0.659728 11.2692 0.976311 11.4645 1.17157L14.2929 4L11.4645 6.82843C11.2692 7.02369 11.2692 7.34027 11.4645 7.53553C11.6597 7.7308 11.9763 7.7308 12.1716 7.53553L15.3536 4.35355ZM0 4.5H15V3.5H0V4.5Z" fill="currentColor" />
+                    </svg>
+                </span>
+            </a>
         </header>
         <div class="px-6 lg:px-0">
             <div class="max-w-[640px] mx-auto border-b border-b-[#E5E5E5] mb-10"></div>
