@@ -1,0 +1,27 @@
+{{- define "main" }}
+<div id="main" class="author-term py-10">
+    <div class="container w-full max-w-[710px] mx-auto">
+        <header class="max-w-[640px] mx-auto text-center pb-10 border-b border-b-[#E5E5E5]">
+            {{- with .Resources.GetMatch .Params.cover }}
+                {{- with .Resize "160x" }}
+                    <img class="mx-auto rounded-full mb-6" src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $.Title }}" />
+                {{- end }}
+            {{- end }}
+            <h1 class="text-[#0E4678] text-4xl font-heading font-normal mb-4">{{ .Title }}</h1>
+            {{- with .Params.description }}
+            <p class="text-black text-lg font-body">{{ . }}</p>
+            {{- end }}
+        </header>
+        <div class="px-6 lg:px-0">
+            <div class="max-w-[640px] mx-auto border-b border-b-[#E5E5E5] mb-10"></div>
+        </div>
+        {{- $paginator := .Paginate .Data.Pages }}
+        <div class="space-y-10">
+            {{- range $paginator.Pages }}
+            {{ partial "post-card.html" . }}
+            {{- end }}
+        </div>
+        {{ partial "pagination.html" . }}
+    </div>
+</div>
+{{- end }}
