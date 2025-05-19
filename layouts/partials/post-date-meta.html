@@ -5,7 +5,7 @@
         <span>by
         {{- $authors := . }}
         {{- range $index, $author := $authors }}
-            <a class="text-current" href="{{ $author.RelPermalink }}">{{ $author.LinkTitle }}</a>{{ if ne (add $index 1) (len $authors) }}, {{ end }}
+            <span class="text-current">{{ $author.LinkTitle }}</span>{{ if ne (add $index 1) (len $authors) }}, {{ end }}
         {{- end -}}
         </span>
     {{- end }}
