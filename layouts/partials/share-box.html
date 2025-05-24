@@ -22,8 +22,15 @@
                     <input type="text" id="lastName" name="Last Name" placeholder="e.g., Doe" required class="w-full border border-gray-300 rounded p-2 placeholder:text-gray-400 placeholder:opacity-75" />
                 </div>
                 <div>
-                    <label for="pronouns" class="block text-base font-body text-black mb-1">Preferred pronouns</label>
-                    <input type="text" id="pronouns" name="Preferred pronouns" placeholder="e.g., they/them" class="w-full border border-gray-300 rounded p-2 placeholder:text-gray-400 placeholder:opacity-75" />
+                    <label for="pronouns-select" class="block text-base font-body text-black mb-1">Preferred pronouns</label>
+                    <select id="pronouns-select" name="Preferred pronouns" class="w-full border border-gray-300 rounded p-2 placeholder:text-gray-400 placeholder:opacity-75">
+                        <option value="" disabled selected>Select pronouns</option>
+                        <option value="she/her">she/her</option>
+                        <option value="he/him">he/him</option>
+                        <option value="they/them">they/them</option>
+                        <option value="other">Other (type below)</option>
+                    </select>
+                    <input type="text" id="pronouns-other" placeholder="Please specify" class="w-full border border-gray-300 rounded p-2 placeholder:text-gray-400 placeholder:opacity-75 mt-2 hidden" />
                 </div>
                 <div>
                     <label for="affiliation" class="block text-base font-body text-black mb-1">Institutional affiliation</label>

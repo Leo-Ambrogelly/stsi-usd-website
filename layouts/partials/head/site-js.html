@@ -6,9 +6,10 @@
 {{- $fastsearch := resources.Get "js/hugofastsearch.js" }}
 {{- $search := resources.Get "js/search.js" }}
 {{- $emailvalidate := resources.Get "js/email-validation.js" }}
+{{- $pronouns := resources.Get "js/pronouns-field.js" }}
 
 <!-- Combine JS -->
-{{- $js := slice $persist $collapse $minisearch $fastsearch $search $emailvalidate $alpine | resources.Concat "js/main.js" }}
+{{- $js := slice $persist $collapse $minisearch $fastsearch $search $emailvalidate $pronouns $alpine | resources.Concat "js/main.js" }}
 {{- $js_min := $js | resources.Minify }}
 <script>window.__BASE_URL__ = '{{ "/" | relURL }}';</script>
 <script defer src="{{ $js_min.RelPermalink }}"></script>
