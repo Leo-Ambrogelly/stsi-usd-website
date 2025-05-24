@@ -1,0 +1,44 @@
+<div x-show="isShare" x-transition.opacity x-cloak class="fixed inset-0 bg-black/70 z-40 p-6 pt-32 overflow-auto">
+    <div class="bg-white w-full max-w-[640px] mx-auto h-auto relative rounded-lg shadow-lg">
+        <div class="pt-6 px-8 pb-10">
+            <div class="flex justify-between items-center mb-5">
+                <div class="text-black font-heading font-light">
+                    <p>Share Your Work</p>
+                </div>
+                <div>
+                    <button @click="isShare = false" class="focus:outline-none size-8 translate-x-2 text-black text-2xl">×</button>
+                </div>
+            </div>
+            <form name="share-work" method="POST" data-netlify="true" class="space-y-6">
+                <input type="hidden" name="form-name" value="share-work" />
+                <div>
+                    <label for="firstName" class="block text-base font-body text-black mb-1">First Name</label>
+                    <input type="text" id="firstName" name="First Name" required class="w-full border border-gray-300 rounded p-2" />
+                </div>
+                <div>
+                    <label for="lastName" class="block text-base font-body text-black mb-1">Last Name</label>
+                    <input type="text" id="lastName" name="Last Name" required class="w-full border border-gray-300 rounded p-2" />
+                </div>
+                <div>
+                    <label for="pronouns" class="block text-base font-body text-black mb-1">Preferred pronouns</label>
+                    <input type="text" id="pronouns" name="Preferred pronouns" class="w-full border border-gray-300 rounded p-2" />
+                </div>
+                <div>
+                    <label for="affiliation" class="block text-base font-body text-black mb-1">Institutional affiliation</label>
+                    <input type="text" id="affiliation" name="Institutional affiliation" class="w-full border border-gray-300 rounded p-2" />
+                </div>
+                <div>
+                    <label for="email" class="block text-base font-body text-black mb-1">Email address</label>
+                    <input type="email" id="email" name="Email" required class="w-full border border-gray-300 rounded p-2" />
+                </div>
+                <div>
+                    <label for="work" class="block text-base font-body text-black mb-1">Tell us about your work!</label>
+                    <textarea id="work" name="Work description" rows="6" required class="w-full border border-gray-300 rounded p-2"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="px-4 py-2 bg-primary text-white rounded">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
