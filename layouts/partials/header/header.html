@@ -15,7 +15,7 @@
                     <span class="text-[#003B70] text-sm md:text-base lg:text-base font-heading font-normal leading-tight">
                         <a class="text-[#003B70]" href="{{ .Site.BaseURL }}">{{ $prefix }}</a>
                         <span class="text-[#003B70] md:hidden">University of San Diego</span>
-                        <a class="text-[#003B70] hover:italic hidden md:inline-block" href="https://sandiego.edu" target="_blank" rel="noopener">University of San Diego</a>
+                        <a class="text-[#003B70] hover:italic hidden md:inline-block" href="https://sandiego.edu" target="_blank" rel="noopener noreferrer">University of San Diego</a>
                     </span>
                     {{- end }}
                 </div>
@@ -37,7 +37,7 @@
                                 {{- if or (findRE `^#` .URL) $active }}
                                 <span {{- else }} <a href="{{- .URL | relURL -}}" {{- end }}
                                     class="lg:w-full inline-flex items-center justify-between lg:justify-start text-current py-[7px] px-3 cursor-pointer"
-                                    {{ if findRE `^http` .URL }}target="_blank" rel="noopener" {{ end }}>
+                                    {{ if findRE `^http` .URL }}target="_blank" rel="noopener noreferrer" {{ end }}>
                                     <span
                                         class="border-b {{ if $active }}border-b-[#E5E5E5] menu-link-active{{ else }}border-b-transparent{{ end }} py-1">{{
                                         .Name }}</span>
@@ -61,7 +61,7 @@
                                         class="submenu__item text-center text-white text-2xl font-heading lg:text-black lg:text-sm lg:font-body {{ if $active }}submenu-active{{ end }}">
                                         <a class="submenu__item-link text-current leading-normal"
                                             href="{{ .URL | relURL }}" {{ if findRE `^http` .URL }}target="_blank"
-                                            rel="noopener" {{ end }}>{{ .Name }}
+                                            rel="noopener noreferrer" {{ end }}>{{ .Name }}
                                             {{- if findRE `^http` .URL }}
                                             {{- partial "svg/icon-up-right.svg" (dict "class" "inline-block w-3 h-3 ml-2 fill-current text-current") }}
                                             {{- end }}
@@ -71,7 +71,7 @@
                                 </ul>
                                 {{- else }}
                                 <a class="menu__item-link block text-current py-[7px] px-3" href="{{ .URL | relURL }}"
-                                    {{ if findRE `^http` .URL }}target="_blank" rel="noopener" {{ end }}>
+                                    {{ if findRE `^http` .URL }}target="_blank" rel="noopener noreferrer" {{ end }}>
                                     <span
                                         class="border-b {{ if $active }}border-b-[#E5E5E5] menu-link-active{{ else }}border-b-transparent{{ end }} py-1">{{
                                         .Name }}</span>
