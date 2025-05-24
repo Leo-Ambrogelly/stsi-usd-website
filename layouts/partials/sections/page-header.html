@@ -2,7 +2,7 @@
 {{- $section := .section }}
 {{- with $section }}
 {{- if .enable }}
-<section id="about-section" class="about-section">
+<section id="about-section" class="about-section" x-data="{showModal: false}">
     <div class="container w-full max-w-[710px] mx-auto">
         <div class="px-6 md:px-0">
             <div
@@ -13,8 +13,7 @@
                     {{- end }}
                 </div>
                 <div class="inline-block">
-                    <a class="flex items-center space-x-4 border-2 border-primary rounded-[4px] text-primary text-sm font-body pt-3 pb-[10px] px-2 transition-colors duration-300 ease-[ease] hover:bg-[#0074c8] hover:text-white hover:border-[#0074c8]"
-                        href="{{ .button_link }}" target="_blank" rel="noopener">
+                    <a @click.prevent="showModal = true" href="#" class="flex items-center space-x-4 border-2 border-primary rounded-[4px] text-primary text-sm font-body pt-3 pb-[10px] px-2 transition-colors duration-300 ease-[ease] hover:bg-[#0074c8] hover:text-white hover:border-[#0074c8]">
                         <span class="leading-none">{{ .button_text }}</span>
                         <span class="w-4 flex-none">
                             <svg class="w-full h-auto" viewBox="0 0 16 8" fill="currentcolor"
@@ -27,6 +26,12 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div x-show="showModal" x-cloak x-transition.opacity class="fixed inset-0 bg-black/70 z-40 flex items-center justify-center p-6">
+        <div class="bg-white w-full max-w-[400px] mx-auto rounded-lg shadow-lg p-6 text-center">
+            <p class="text-black text-lg font-body">Sorry, we're working on that!</p>
+            <button @click="showModal = false" class="mt-4 px-4 py-2 bg-primary text-white rounded">Close</button>
         </div>
     </div>
 </section>
