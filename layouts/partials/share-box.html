@@ -49,7 +49,8 @@
                     </button>
                 </div>
             </form>
-            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            {{- $sri := site.Params.recaptcha_sri }}
+            <script src="https://www.google.com/recaptcha/api.js" async defer{{ with $sri }} integrity="{{ . }}" crossorigin="anonymous"{{ end }}></script>
         </div>
     </div>
 </div>
