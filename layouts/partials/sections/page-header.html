@@ -4,10 +4,10 @@
 {{- if .enable }}
 <section id="about-section" class="about-section" x-data="{
         showModal: false,
-        countdown: 3,
+        countdown: 5,
         timer: null,
         open() {
-            this.countdown = 3;
+            this.countdown = 5;
             this.showModal = true;
             this.timer = setInterval(() => {
                 this.countdown--;
