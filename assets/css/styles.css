@@ -93,3 +93,16 @@ body {
 .highlight {
     @apply bg-yellow-200;
 }
+
+/* Adjust captcha size on smaller screens */
+.recaptcha-wrapper>div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 767px) {
+    .recaptcha-wrapper {
+        transform: scale(0.9);
+        transform-origin: 0 0;
+    }
+}
