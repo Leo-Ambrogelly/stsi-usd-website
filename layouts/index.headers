@@ -4,5 +4,8 @@
   X-XSS-Protection: 1; mode=block
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin
-  Feature-Policy: geolocation 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'
+  Permissions-Policy: geolocation=(self)
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
   Cache-Control: public, max-age=31536000
