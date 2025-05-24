@@ -13,7 +13,9 @@
                     {{ $title := .Site.Data.header.title }}
                     {{ $prefix := replace $title "University of San Diego" "" }}
                     <span class="text-[#003B70] text-sm md:text-base lg:text-base font-heading font-normal leading-tight">
-                        <a class="text-[#003B70]" href="{{ .Site.BaseURL }}">{{ $prefix }}</a><a class="text-[#003B70] hover:italic" href="https://sandiego.edu" target="_blank" rel="noopener">University of San Diego</a>
+                        <a class="text-[#003B70]" href="{{ .Site.BaseURL }}">{{ $prefix }}</a>
+                        <span class="text-[#003B70] md:hidden">University of San Diego</span>
+                        <a class="text-[#003B70] hover:italic hidden md:inline-block" href="https://sandiego.edu" target="_blank" rel="noopener">University of San Diego</a>
                     </span>
                     {{- end }}
                 </div>
