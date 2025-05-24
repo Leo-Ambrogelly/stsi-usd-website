@@ -5,7 +5,7 @@
         <header class="mb-8">
             <h2 class="text-[#104879] text-4xl font-heading font-normal">Share Your Work</h2>
         </header>
-        <form name="share-work" method="POST" data-netlify="true" class="space-y-6">
+        <form name="share-work" method="POST" data-netlify="true" enctype="multipart/form-data" class="space-y-6">
             <input type="hidden" name="form-name" value="share-work" />
             <div>
                 <label for="firstName" class="block text-base font-body text-black mb-1">First Name</label>
@@ -30,6 +30,14 @@
             <div>
                 <label for="work" class="block text-base font-body text-black mb-1">Tell us about your work!</label>
                 <textarea id="work" name="Work description" rows="6" placeholder="Briefly describe your project" required class="w-full border border-gray-300 rounded p-2 placeholder:text-gray-400 placeholder:opacity-75"></textarea>
+            </div>
+            <div>
+                <label for="workFile" class="block text-base font-body text-black mb-1">Upload a file (optional)</label>
+                <input type="file" id="workFile" name="Work file" class="w-full border border-gray-300 rounded p-2" />
+            </div>
+            <div>
+                <label for="workLink" class="block text-base font-body text-black mb-1">Link to your project (optional)</label>
+                <input type="url" id="workLink" name="Work link" placeholder="https://" class="w-full border border-gray-300 rounded p-2 placeholder:text-gray-400 placeholder:opacity-75" />
             </div>
             <div data-netlify-recaptcha="true"></div>
             <div>
