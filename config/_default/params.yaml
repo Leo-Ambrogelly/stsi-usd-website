@@ -2,3 +2,4 @@ description: leoambrogelly
 # Your favicon must be located in the assets/images folder
 favicon: images/favicon.png
 author: leoambrogelly
+recaptcha_sri: ""
