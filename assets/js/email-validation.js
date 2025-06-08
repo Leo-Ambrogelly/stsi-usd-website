@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('form[name="share-work"]').forEach((form) => {
+        form.setAttribute('novalidate', '');
         const requiredFields = form.querySelectorAll('input[required], textarea[required]');
 
         requiredFields.forEach((field) => {
             const errorEl = document.createElement('p');
-            errorEl.className = 'text-red-600 text-sm mt-1 hidden';
+            errorEl.className = 'form-error hidden';
             field.insertAdjacentElement('afterend', errorEl);
 
             const validateField = () => {
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 field.setCustomValidity(message);
                 errorEl.textContent = message;
                 errorEl.classList.toggle('hidden', !message);
-                field.classList.toggle('border-red-600', !!message);
+                field.classList.toggle('invalid-input', !!message);
             };
 
             field.addEventListener('input', validateField);

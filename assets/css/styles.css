@@ -5,6 +5,7 @@
 @import "partials/fonts.css";
 @import "partials/highlighter.css";
 @import "partials/button.css";
+@import "partials/form.css";
 @import "site.css";
 
 [x-cloak] {
