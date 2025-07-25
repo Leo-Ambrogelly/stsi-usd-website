@@ -17,7 +17,7 @@
                         {{- with .title }}
                         <h3 class="text-black text-base font-body font-normal leading-normal mb-0">{{ . | safeHTML }}</h3>
                         {{- end }}
-                        <div class="w-[18px] h-[22px] flex items-center justify-center relative">
+                        <div class="w-[18px] h-[22px] flex items-center justify-center relative shrink-0">
                             <svg
                                 :class="openIndex === {{ $index }} ? 'rotate-45 opacity-0' : 'rotate-0 opacity-100'"
                                 class="absolute inset-0 transition-all duration-300 transform"
