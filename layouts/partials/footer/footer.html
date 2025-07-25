@@ -1,7 +1,7 @@
 <footer>
     <div class="container w-full max-w-[710px] mx-auto py-10 px-6 lg:px-0">
         <div class="lg:w-2/3 mx-auto flex justify-between items-center">
-            <div class="w-[86%] text-black text-sm font-body leading-normal">
+            <div class="w-[86%] md:max-w-[340px] text-black text-sm font-body leading-normal">
                 {{- with .Site.Data.footer.copyright }}
                 <p>{{ . | safeHTML }}</p>
                 {{- end }}
