@@ -3,18 +3,20 @@
 {{- with $section }}
 {{- if .enable }}
 <section class="about-program-section">
-    <div class="container w-full max-w-[640px] mx-auto px-6 md:px-0 pt-10 border-b border-b-[#E5E5E5]">
-        {{- with .title }}
-        <header>
-            <h2 class="text-[#104879] text-4xl font-normal font-heading mb-9">{{ . | safeHTML }}</h2>
-        </header>
-        {{- end }}
-        <div class="mb-16">
-            <ol class="pl-4 space-y-4">
-                {{- range .programs }}
-                <li class="text-black text-base font-body">{{ . | safeHTML }}</li>
-                {{- end }}
-            </ol>
+    <div class="container w-full max-w-[640px] mx-auto px-6 md:px-0 pt-10">
+        <div class="pb-10 border-b border-b-[#E5E5E5]">
+            {{- with .title }}
+            <header>
+                <h2 class="text-[#104879] text-4xl font-normal font-heading mb-9">{{ . | safeHTML }}</h2>
+            </header>
+            {{- end }}
+            <div class="mb-16">
+                <ol class="pl-4 space-y-4">
+                    {{- range .programs }}
+                    <li class="text-black text-base font-body">{{ . | safeHTML }}</li>
+                    {{- end }}
+                </ol>
+            </div>
         </div>
     </div>
 </section>
